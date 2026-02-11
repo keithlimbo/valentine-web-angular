@@ -45,6 +45,7 @@
     "@types/canvas-confetti": "^1.9.0",
     "@types/express": "^5.0.1",
     "@types/node": "^20.17.19",
+    "angular-cli-ghpages": "^3.0.2",
     "daisyui": "^5.5.18",
     "jsdom": "^27.1.0",
     "postcss": "^8.5.3",
