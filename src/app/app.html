@@ -2,16 +2,16 @@
   class="relative flex flex-col items-center justify-center h-screen overflow-hidden bg-rose-100 bg-[url('https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNW5rdWd3YTdhbmc5ZHllbTN6d2d6ZTdjN3FnM3k5c3YzODdoYm12ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/GofSlWAQNx0QhtX7tP/giphy.gif')]">
   <div class="card bg-white p-6 items-center text-center m-5 md:w-1/3shadow-lg shadow-pink-200">
     @if(isYes()){
-    <h1 class="card-title mt-5 text-2xl font-bold text-rose-700 font-pacifico">YEHEY! Happy Valentine's Day!</h1>
+    <h1 class="card-title mt-5 text-3xl font-bold text-rose-700 font-pacifico">YEHEY! Happy Valentine's Day!</h1>
     <img class="scale-100 my-5" src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjEzaDk4dnA4NDBubzQwdTV5Ym1nMTVoNTF5NDJxcWJmbTRrZjRhOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MDJ9IbxxvDUQM/giphy.gif" alt="">
-
+    <h2 class="card-title mt-5 text-2xl font-bold text-rose-700 font-pacifico">See you my bebe loves❤️<br>@Deer Claus Steakhouse & Restaurant - Lipa City Branch<br>February 14,2026 2:00pm</h2>
     }@else{
-    <h1 class="card-title mt-5 text-2xl font-bold text-rose-700 font-pacifico">{{headerText()}}</h1>
+    <h1 class="card-title mt-5 text-3xl font-bold text-rose-700 font-pacifico">{{headerText()}}</h1>
     <img class="w-52 h-52 my-5" [src]="selectedImage()" alt="">
     <div class="card-actions flex items-center justify-center gap-5 mt-5 w-80">
       <button [ngClass]="yesClass()" (click)="onYesClick()">YES</button>
       @if (!hideNo()) {
-      <button class="btn btn-soft btn-m bg-red-400 rounded-full border-0 py-5" (click)="onNoClick()">NO</button>
+      <button class="btn btn-soft btn-m bg-red-400 rounded-full border-0 py-5" (click)="onNoClick()" [class.animate-shake]="isShaking()" >NO</button>
       }
     </div>
     }

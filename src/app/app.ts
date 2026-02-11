@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import confetti from 'canvas-confetti';
+import { sign } from 'crypto';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -19,9 +20,9 @@ export class App {
   ]
 
   imageList = [
-    'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3RueWQwOHM4aGczOTFpbzJnZG8wM3Q1ZHFjdHl4M2c3a25weWJudCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/uKvAWApE3vWL1MAASf/giphy.gif',
-    'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYXpudG9qYmhkdHQ0Mmp3OWtiNGgxczVuaWVoMW05b2I4ejA1OTJtdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/zZbf6UpZslp3nvFjIR/giphy.gif',
-    'https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcWt6dW9rZjRnb3k2Z3h4NnYzbGZvMTBieTgzMzdkanFrd2ZsNGl4YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vPzbDN4rBxuvtpSpzF/giphy.gif'
+    '/1.gif',
+    '/2.gif',
+    '/3.gif'
   ];
 
   protected isYes = signal(false);
@@ -29,6 +30,7 @@ export class App {
   protected headerText = signal(this.titleList[0]);
   protected yesClass = signal('btn btn-soft btn-m bg-green-400 rounded-full border-0 py-5');
   protected hideNo = signal(false)
+  protected isShaking = signal(false);
 
   launchConfetti() {
     confetti({
@@ -38,12 +40,20 @@ export class App {
     });
   }
 
+  triggerShake() {
+    this.isShaking.set(true)
+    // Remove the class after the animation finishes (400ms) 
+    // so it can be re-triggered on the next click.
+    setTimeout(() => this.isShaking.set(false), 400);
+  }
+
   onYesClick() {
     this.isYes.set(true);
     this.launchConfetti();
   }
 
   onNoClick() {
+    this.triggerShake();
     this.noClickedTimes++;
 
     if (this.noClickedTimes === 3) {
@@ -63,7 +73,4 @@ export class App {
         'btn btn-soft ' + this.yesBtnSize + ' bg-green-400 rounded-full border-0 py-5',
       );
   }
-
-  
-
 }
